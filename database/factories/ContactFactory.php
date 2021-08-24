@@ -23,8 +23,8 @@ class ContactFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'title' => $this->faker->company,
-            'phone' => $this->faker->phoneNumber,
+            'title' => $this->faker->company(),
+            'phone' => $this->faker->phoneNumber()
         ];
     }
 }

@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return Contact::all();
     }
 
     /**
@@ -25,7 +25,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'phone' => 'required',
+        ]);
+
+        Contact::create($request->all());
+        return response('', 200);
     }
 
     /**
@@ -36,7 +43,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return $contact;
     }
 
     /**
@@ -48,7 +55,14 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $contact->update($request->all());
+        return response('', 200);
     }
 
     /**
@@ -59,6 +73,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return response('', 204);
     }
 }
